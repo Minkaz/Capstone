@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { 
-    getAuth, 
-    signInWithRedirect, 
+    getAuth,
     signInWithPopup, 
     GoogleAuthProvider 
 } from 'firebase/auth';
@@ -54,5 +53,4 @@ export const  createUserDocumentFromAuth = async (userAuth) => {
     }
 
     return userDocRef
-
 }
