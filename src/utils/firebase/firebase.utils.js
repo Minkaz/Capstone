@@ -51,16 +51,10 @@ export const getCategoriesAndDocuments = async () => {
 
     const querySnapShot = await getDocs(q);
 
-    return querySnapShot.docs.reduce((acc, docSnapShot) => {
-        const {title, items} = docSnapShot.data();
-        acc[title.toLowerCase()] = items;
-
-        return acc;
-    }, {})
+    return querySnapShot.docs.map(docSnapShot => docSnapShot.data());
 }
 
-export
-const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
     if (!userAuth) return;
 
     const userDocRef = doc(db, 'users', userAuth.uid);
